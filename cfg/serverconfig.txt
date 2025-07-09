@@ -1,6 +1,6 @@
 "Server Config"
 {
-	"hostname"		"GMod 9.0.4"
+	"hostname"		"Garry's Mod 9 Project"
 	"maxplayers"		"32"
 	"gm_sv_clientlimit_ragdolls"		"3"
 	"gm_sv_clientlimit_thrusters"		"10"

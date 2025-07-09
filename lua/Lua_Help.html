@@ -1,14 +1,14 @@
 <div style="text-align: center;">
 
-<div style="width: 750px; margin: 0px auto; border: 5px solid #ccc; background-color: #eee; padding: 10px; font-size: 12px; font-family: Tahoma; margin-top: 30px; color: #222; text-align: left;">
+<div style="width: 750px; border: 5px solid #ccc; background-color: #eee; padding: 10px; font-size: 12px; font-family: Tahoma,serif; margin: 30px auto 0;color: #222; text-align: left; border-radius: 25px">
 
-<div style="font-size: 30px; font-family: impact; width: 100%; margin-bottom: 20px;">Lua Help</div>
+<div style="font-size: 30px; font-family: impact,serif; width: 100%; margin-bottom: 20px;">Lua Help</div>
 
 This 'cheat sheet' is aimed at people that have a basic knowledge of programming. I'll start with some quick and obvious things that people may or may not know.
 
 <ul>
 <li> The .lua files are plain text. Open them with a text editor (like Notepad).
-<li> If you open in notepad and all of the text is on one line then use an editor like <a href="http://www.flos-freeware.ch/notepad2.html">Notepad2</a> or <a href="http://blua.sourceforge.net/">BLua</a>.
+<li> If you open in notepad and all of the text is on one line then use an editor like <a href="https://www.flos-freeware.ch/notepad2.html">Notepad2</a> or <a href="https://blua.sourceforge.net/">BLua</a>.
 <li> All functions which call functions in the Source Engine start with the _ character.
 <li> You don't have to add a ; at the end of every line - put it won't punish you for adding it.
 </ul>
@@ -23,19 +23,19 @@ function SayMyName( name )
      Msg( "Your Name Is " .. name )
 
 end
-</pre></p>
+</pre></li>
 
 <li> <strong>Calling a function</strong>
 <p><pre>
 SayMyName( "garry" );
-</pre></p>
+</pre></li>
 
 <li> <strong>Commenting</strong>
 <p><pre>
 -- Calling the function boss.
 SayMyName( "garry" );
 -- Called the function boss.
-</pre></p>
+</pre></li>
 
 <li> <strong>If statement</strong>
 <p><pre>
@@ -52,7 +52,7 @@ if ( name ~= "garry" ) then
      SayMyName( "NOT garry" )
 
 end
-</pre></p>
+</pre></li>
 
 
 
@@ -65,7 +65,7 @@ for i=0, 32 do
     Msg( "Number " .. i )
 
 end
-</pre></p>
+</pre></li>
 
 
 <li> <strong>Variables</strong>
@@ -132,7 +132,7 @@ end
 
 SayPlayerHello( Players[0].intro )
 
-</pre></p>
+</pre></li>
 
 </ul>
 
@@ -147,9 +147,9 @@ Anyway, here's some useful Lua links:
 </p>
 
 <ul>
-<li> <a href="http://www.lua.org/">Lua's Homepage</a> - not too useful, but you might want to visit.
-<li> <a href="http://gmwiki.garry.tv/index.php/Lua">GMod Wiki</a> - the Lua scripting section in the Garry's Mod Wiki.
-<li> <a href="http://forums.facepunchstudios.com/forumdisplay.php?f=49">GMod Lua Forum</a> - ask for help, give help, share your mods!
+<li> <a href="https://www.lua.org/">Lua's Homepage</a> - not too useful, but you might want to visit.
+<li> <a href="https://gmwiki.garry.tv/index.php/Lua">GMod Wiki</a> - the Lua scripting section in the Garry's Mod Wiki.
+<li> <a href="https://forums.facepunchstudios.com/forumdisplay.php?f=49">GMod Lua Forum</a> - ask for help, give help, share your mods!
 </ul>
 
 <div style="width: 100%; text-align: right; margin: 30px; font-weight: bold;">- TEAM GARRY</div>

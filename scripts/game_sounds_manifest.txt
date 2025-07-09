@@ -74,9 +74,9 @@ game_sounds_manifest
 	"precache_file"		"scripts/npc_sounds_stalker.txt"
 	"precache_file"		"scripts/npc_sounds_gman.txt"
 	
-	// gmod shit!
+	// Garry's Mod Sounds
 	"precache_file"		"scripts/game_sounds_gmod.txt"
 	
-	// cs shit!
+	// Counter-Strike: Source Weapon Sounds
 	"precache_file"		"scripts/sounds_csweapons.txt"
 }
