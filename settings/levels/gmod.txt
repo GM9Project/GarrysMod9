@@ -42,10 +42,10 @@
 		"credits"	"Garry Newman / Valve"
 	}
 
-	"Football (soccer)"
+	"Soccer"
 	{
-		"map"		"gm_football"
-		"material"	"vgui/chapters/gm_football"
+		"map"		"gm_soccer"
+		"material"	"vgui/chapters/gm_soccer"
 		"credits"	"Tristan Pemble (n42)"
 	}
 
