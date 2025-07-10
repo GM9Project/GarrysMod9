@@ -1,9 +1,5 @@
-
-
 	function eventPlayerKilled ( killed, attacker, weapon )
-
 		_PlayerAddDeath( killed, 1 )
-
 		if ( killed == attacker ) then
 			_PlayerAddScore( killed, -1 )
 		elseif ( attacker > 0 ) then
@@ -11,37 +7,28 @@
 			_PlayerAllowDecalPaint( attacker ); 
 		else
 			_PlayerAddScore( killed, -1 )
-		end	
-
+		end
 	end
 
 	function eventPlayerSpawn ( userid )
-	
 		if (_PlayerInfo(userid, "team") == TEAM_SPECTATOR) then
 			onShowTeam(userid);
-			
 		end
-		
 		_PlayerSetDrawTeamCircle(userid, true);
-		
 		PlayerInfo[userid] = {}
 		PlayerInfo[userid].StartPos = vector3(0,0,0)
 		PlayerInfo[userid].IsFlying = 0
-		
 		DrawStats( userid )
 		UpdateScores( userid )
 	end
 	
 	function StartPoint( Activator, Caller, NewCP )
-
 		if (_PlayerInfo(Activator, "connected") == false ) then
 			return
 		end
-		
 		if (PlayerInfo[Activator].IsFlying == 1) then
 			return
 		end
-		
 		PlayerInfo[Activator].StartPos = _PlayerGetShootPos( Activator )
 		PlayerInfo[Activator].IsFlying = 1
 		PlayerInfo[Activator].Time = _CurTime()
@@ -49,32 +36,26 @@
 	end
 	
 	function TouchDown( Activator, Caller, NewCP )
-
 		if (_PlayerInfo(Activator, "connected") == false ) then
 			return
 		end
-		
 		if (PlayerInfo[Activator].IsFlying == 0) then
 			return
 		end
-		
 		local StartPos = PlayerInfo[Activator].StartPos
 		local EndPos = _PlayerGetShootPos( Activator )
 		local Diff = vecSub(StartPos, EndPos)
 		local Distance = vecLength(Diff)
 		Distance = Distance / 30
 		local TimeDiff = _CurTime() - PlayerInfo[Activator].Time
-		
 		_GModText_Hide( player, 21 );
 		_GModText_Hide( player, 10 );
-
 		_GModText_Start( "Default" );
 		_GModText_SetColor( 0, 255, 0, 255 );
 		_GModText_SetTime( 5, 0, 0.3 );
 		_GModText_SetPos( -1, 0.3 )
 		_GModText_SetText( "You flew " .. FormatDist(Distance) .. " feet for " .. FormatTime(TimeDiff) .. " seconds!");
 		_GModText_Send( player, 1 );
-		
 		local c1 = 0
 		local c2 = 0
 		local c3 = 0
@@ -91,7 +72,6 @@
 			Stats.ShortestDistance.Team = _PlayerInfo(Activator, "team")
 			c2 = 1
 		end
-		
 		if (TimeDiff > Stats.LongestTime.Value or Stats.LongestTime.Value == 0) then
 			Stats.LongestTime.Value = TimeDiff
 			Stats.LongestTime.Player = _PlayerInfo(Activator, "name")
@@ -104,63 +84,71 @@
 			Stats.ShortestTime.Team = _PlayerInfo(Activator, "team")
 			c4 = 1
 		end
-		
 		if (c1 or c2 or c3 or c4) then
 			_TeamAddScore( _PlayerInfo(Activator, "team"), 1 )
 			UpdateScores(0)
 		end
-		
 		DrawStats(0)
-		
 		PlayerInfo[Activator].IsFlying = 0
 		HaltTimer( PlayerInfo[Activator].Timer )
 	end
 	
-
-	-- Thanks g33k for letting me use this code:
-	function autoJoinTeam(playerid, wantTeam)
+	function autoJoinTeam(playerid, wantTeam) -- Thanks g33k for letting me use this code
 		-- do I really need this much code for an auto-join?
-
 		local t0p, t1p, t2p, t3mp = -1, -1, -1, -1;
 		local plyrCount = 0;
-
 		plyrCount = _TeamNumPlayers(TEAM_BLUE);
 		plyrCount = plyrCount + _TeamNumPlayers(TEAM_YELLOW);
 		plyrCount = plyrCount + _TeamNumPlayers(TEAM_GREEN);
 		plyrCount = plyrCount + _TeamNumPlayers(TEAM_RED);
 
 		-- this is used to make sure no one joins a team by theirself if there's already a team with 1 person
-		if (_TeamNumPlayers(TEAM_BLUE) == 0) then t0p = TEAM_BLUE;
+		if (_TeamNumPlayers(TEAM_BLUE) == 0) the
+			t0p = TEAM_BLUE;
 		elseif (_TeamNumPlayers(TEAM_BLUE) == 1) then
 			if (_PlayerInfo(playerid, "team") ~= TEAM_BLUE) then
 				t1p = TEAM_BLUE;
 			end
-		elseif (_TeamNumPlayers(TEAM_BLUE) == 2) then t2p = TEAM_BLUE;
-		elseif (_TeamNumPlayers(TEAM_BLUE) >= 3) then t3mp = TEAM_BLUE; end;
+		elseif (_TeamNumPlayers(TEAM_BLUE) == 2) then
+			t2p = TEAM_BLUE;
+		elseif (_TeamNumPlayers(TEAM_BLUE) >= 3) then
+			t3mp = TEAM_BLUE;
+		end;
 
-		if (_TeamNumPlayers(TEAM_YELLOW) == 0) then t0p = TEAM_YELLOW;
+		if (_TeamNumPlayers(TEAM_YELLOW) == 0) then
+			t0p = TEAM_YELLOW;
 		elseif (_TeamNumPlayers(TEAM_YELLOW) == 1) then
 			if (_PlayerInfo(playerid, "team") ~= TEAM_YELLOW) then
 				t1p = TEAM_YELLOW;
 			end
-		elseif (_TeamNumPlayers(TEAM_YELLOW) == 2) then t2p = TEAM_YELLOW;
-		elseif (_TeamNumPlayers(TEAM_YELLOW) >= 3) then t3mp = TEAM_YELLOW; end;
+		elseif (_TeamNumPlayers(TEAM_YELLOW) == 2) then
+			t2p = TEAM_YELLOW;
+		elseif (_TeamNumPlayers(TEAM_YELLOW) >= 3) then
+			t3mp = TEAM_YELLOW;
+		end;
 
-		if (_TeamNumPlayers(TEAM_GREEN) == 0) then t0p = TEAM_GREEN;
+		if (_TeamNumPlayers(TEAM_GREEN) == 0) then
+			t0p = TEAM_GREEN;
 		elseif (_TeamNumPlayers(TEAM_GREEN) == 1) then
 			if (_PlayerInfo(playerid, "team") ~= TEAM_GREEN) then
 				t1p = TEAM_GREEN;
 			end
-		elseif (_TeamNumPlayers(TEAM_GREEN) == 2) then t2p = TEAM_GREEN;
-		elseif (_TeamNumPlayers(TEAM_GREEN) >= 3) then t3mp = TEAM_GREEN; end;
+		elseif (_TeamNumPlayers(TEAM_GREEN) == 2) then
+			t2p = TEAM_GREEN;
+		elseif (_TeamNumPlayers(TEAM_GREEN) >= 3) then
+			t3mp = TEAM_GREEN; end;
 
-		if (_TeamNumPlayers(TEAM_RED) == 0) then t0p = TEAM_RED;
+		if (_TeamNumPlayers(TEAM_RED) == 0) then
+			t0p = TEAM_RED;
 		elseif (_TeamNumPlayers(TEAM_RED) == 1) then
 			if (_PlayerInfo(playerid, "team") ~= TEAM_RED) then
 				t1p = TEAM_RED;
 			end
-		elseif (_TeamNumPlayers(TEAM_RED) == 2) then t2p = TEAM_RED;
-		elseif (_TeamNumPlayers(TEAM_RED) >= 3) then t3mp = TEAM_RED; end;
+		elseif (_TeamNumPlayers(TEAM_RED) == 2) then
+			t2p = TEAM_RED;
+		elseif (_TeamNumPlayers(TEAM_RED) >= 3) then
+			t3mp = TEAM_RED;
+		end;
 
 		-- make sure there's at least one team with less than 3 people
 		if (plyrCount < 9) and ((t0p > 0) or (t1p > 0) or (t2p > 0)) then
@@ -183,7 +171,6 @@
 					-- If the wanted team has 0 people then let them join it
 					_PlayerChangeTeam(playerid, wantTeam);
 					_PlayerRespawn(playerid);
-
 					local rTeamMember = randomTeamMember(t3mp);
 					if (rTeamMember > 0) then
 						_PlayerChangeTeam(rTeamMember, wantTeam);
@@ -193,7 +180,6 @@
 				else
 					_PlayerChangeTeam(playerid, t0p);
 					_PlayerRespawn(playerid);
-
 					local rTeamMember = randomTeamMember(t3mp);
 					if (rTeamMember > 0) then
 						_PlayerChangeTeam(rTeamMember, t0p);
@@ -201,7 +187,6 @@
 						_PrintMessage(rTeamMember, 4, "You were auto-switched to even teams");
 					end
 				end
-
 			elseif (t2p > 0) then
 				-- there's a 2 person team (and no 1 person team) make them join as the 3rd
 				--_Msg("there's a 2 person team (and no 1 person team) make them join as the 3rd\n");
@@ -226,7 +211,6 @@
 					_PlayerRespawn(playerid);
 				end
 			end
-
 		else
 			-- Find out which team has the least amount of people
 			if (_TeamNumPlayers(TEAM_BLUE) <= _TeamNumPlayers(TEAM_YELLOW))

@@ -1,17 +1,9 @@
-
-
 	function gamerulesThink ()
-
 		if (_CurTime() >= roundEndTime) then
-		
 			if (roundEndFunc ~= nil) then
-			
 				roundEndFunc()
-			
 			end
-		
 		end
-		
 	end 
 
 	function PickDefaultSpawnTeam(userid)		
@@ -30,7 +22,6 @@
 		if (wallEnabled == 1) then
 			return
 		end
-		
 		local wall = _EntGetByName("Wall")
 		if (wall ~= 0) then
 			_EntFire(wall, "Toggle", 0, 0)
@@ -42,7 +33,6 @@
 		if (wallEnabled == 0) then
 			return
 		end
-		
 		local wall = _EntGetByName("Wall")
 		if (wall ~= 0) then
 			_EntFire(wall, "Toggle", 0, 0)
@@ -56,14 +46,12 @@
 			timeDiff = 0
 		end
 		local time = "Time left: " .. ToMinutesSeconds(timeDiff)
-		
 		_GModRect_Start( "gmod/white" );
 		_GModRect_SetPos( 0.035, 0.72, 0.18, 0.06 );
 		_GModRect_SetColor( 0, 0, 0, 150 );
 		_GModRect_SetTime( 99999, 0, 0 );
 		_GModRect_SetDelay( 0 );
 		_GModRect_Send( 0, 2 );
-
 		_GModText_Start( "Default" );
 		_GModText_SetColor( 255, 0, 0, 255 );
 		_GModText_SetTime( 2, 0, 0 );
@@ -79,15 +67,12 @@
 		_GModText_SetPos( -1, 0.2 )
 		_GModText_SetText( "Build!" );
 		_GModText_Send( 0, 11 );
-
 		roundStartTime = _CurTime()
 		roundEndTime = _CurTime() + ROUND_TIME
 		roundEndFunc = StartFlyTestMode
 		local rtChanged = roundType ~= RT_BUILD
 		roundType = RT_BUILD
-		
 		ShowWall()
-		
 		if (rtChanged) then
 			PlayerSpawnAll()
 		end
@@ -98,7 +83,6 @@
 		elseif (roundType == RT_FLYTEST) then		StartFlyTestMode()
 		elseif (roundType == RT_DEATHMATCH) then	BeginDeathMatchMode()
 		end
-		
 	end
 
 	function StartFlyTestMode()
@@ -108,26 +92,21 @@
 		_GModText_SetPos( -1, 0.2 )
 		_GModText_SetText( "Fly my monkies, FLYYYYYY!" );
 		_GModText_Send( 0, 11 );
-
 		roundStartTime = _CurTime()
 		roundEndTime = _CurTime() + ROUND_TIME
 		roundEndFunc = BuildMode
 		roundType = RT_FLYTEST
-		
 		HideWall()
 	end
 	
 	function EndDeathMatchMode()
-	
 		_ServerCommand("gm_sv_playerdamage 0\n")
 		_ServerCommand("gm_sv_pvpdamage 0\n")
 		_ServerCommand("gm_sv_teamdamage 0\n")
 		_ServerCommand("gm_sv_setrules\n")
-	
 		for i=1, _MaxPlayers() do
 			_PlayerSilentKill(i)
 		end
-	
 		BuildMode()
 	end
 
@@ -138,19 +117,16 @@
 		_GModText_SetPos( -1, 0.2 )
 		_GModText_SetText( "Kill each other!!!" );
 		_GModText_Send( 0, 11 );
-		
 		roundStartTime = _CurTime()
 		roundEndTime = _CurTime() + ROUND_TIME
 		roundEndFunc = EndDeathMatchMode
 		local rtChanged = roundType ~= RT_DEATHMATCH
 		roundType = RT_DEATHMATCH
-		
 		if (rtChanged) then
 			_ServerCommand("gm_sv_playerdamage 1\n")
 			_ServerCommand("gm_sv_pvpdamage 1\n")
 			_ServerCommand("gm_sv_teamdamage 1\n")
 			_ServerCommand("gm_sv_setrules\n")
-
 			for i=1, _MaxPlayers() do
 				_PlayerRemoveAllWeapons( i )
 				_PlayerGiveItem( i, "weapon_shotgun" )
@@ -159,7 +135,6 @@
 				_PlayerGiveAmmo( i, 255, "SMG1", false )
 			end
 		end
-		
 		HideWall()
 	end
 	
@@ -168,60 +143,34 @@
 	end
 	
 	function canPlayerHaveItem( playerid, itemname )
-	
 		if ((	itemname == "weapon_physcannon" or 
-			itemname == "weapon_physgun" or
-			itemname == "weapon_Tool") and roundType == RT_DEATHMATCH) then
-			
+			itemname == "weapon_physgun" or itemname == "weapon_Tool") and roundType == RT_DEATHMATCH) then
 			return false
-		
 		elseif ((itemname ~= "weapon_physcannon" and 
-			itemname ~= "weapon_physgun" and
-			itemname ~= "weapon_Tool") and roundType ~= RT_DEATHMATCH) then
-			
+			itemname ~= "weapon_physgun" and itemname ~= "weapon_Tool") and roundType ~= RT_DEATHMATCH) then
 			return false
-			
 		end
-
 		return true
-
 	end
 
 	function gamerulesStartMap ()
-
 		bEndGame = false;
-
 		fIntermissionEnd = 0;
-
 		PlayerFreezeAll( false );
-
-		-- Set the default team names
-
-		_TeamSetName( TEAM_BLUE, "Blue Team" );
+		_TeamSetName( TEAM_BLUE, "Blue Team" ); -- Set the default team names
 		_TeamSetName( TEAM_GREEN, "Green Team" );
 		_TeamSetName( TEAM_YELLOW, "Yellow Team" );
 		_TeamSetName( TEAM_RED, "Red Team" );
-		
 		timeUpdater = AddTimer(0.5, 0, timeUpdater)
-		
 		BuildMode()
-
 	end
 
 	function PlayerSpawnChooseModel ( playerid )	
-
 		if ( _PlayerInfo( playerid, "model" ) == DEFAULT_PLAYER_MODEL ) then
-
 			if ( _PlayerPreferredModel( playerid ) == "" ) then
-
 				_PlayerSetModel( playerid, _PlayerGetRandomAllowedModel() )
-
 			else
-
 				_PlayerSetModel( playerid, _PlayerPreferredModel( playerid ) )
-
 			end
-
 		end
-
 	end

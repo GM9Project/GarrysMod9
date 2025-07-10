@@ -1,0 +1,23 @@
+
+// Please Please Please Please Please Create your own category for maps
+// for your mimimod - overriding this file will cause a shit load of
+// problems for me (and probably you) in later updates.
+
+// Simply name your levels file <yourmodname>.txt
+
+"Hide & Seek"
+{
+	"Outland"
+	{
+		"map"		"gm_hideandseek_outland"
+		"material"	"vgui/chapters/gm_hideandseek_outland"
+		"credits"	"Greg Hughes + 'MrSteak63'"
+	}
+
+	"Yard"
+	{
+		"map"		"gm_hideandseek_yard"
+		"material"	"vgui/chapters/gm_hideandseek_yard"
+		"credits"	"Greg Hughes + 'TrickyClock'"
+	}
+}

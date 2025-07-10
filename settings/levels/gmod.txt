@@ -14,13 +14,6 @@
 		"credits"	"Garry Newman"
 	}
 	
-	"Melonrace - Test"
-	{
-		"map"		"gm_melonrace"
-		"material"	"vgui/chapters/gm_melonrace"
-		"credits"	"Garry Newman"
-	}
-	
 	"Laser Dance"
 	{
 		"map"		"gm_laserdance"
@@ -33,13 +26,6 @@
 		"map"		"gm_910"
 		"material"	"vgui/chapters/gm_910"
 		"credits"	"Garry Newman"
-	}
-
-	"Melonrace - Lockdown"
-	{
-		"map"		"gm_melonlockdown"
-		"material"	"vgui/chapters/gm_melonlockdown"
-		"credits"	"Garry Newman / Valve"
 	}
 
 	"Soccer"
@@ -63,21 +49,6 @@
 		"credits"	"Matt Mullins (g33k)"
 	}
 
-
-	"Hide+Seek - Outland"
-	{
-		"map"		"gm_hideandseek_outland"
-		"material"	"vgui/chapters/gm_hideandseek_outland"
-		"credits"	"Greg Hughes + 'MrSteak63'"
-	}
-
-	"Hide+Seek - Yard"
-	{
-		"map"		"gm_hideandseek_yard"
-		"material"	"vgui/chapters/gm_hideandseek_yard"
-		"credits"	"Greg Hughes + 'TrickyClock'"
-	}
-
 	"Long Sight"
 	{
 		"map"		"gm_longsight"
@@ -85,12 +56,6 @@
 		"credits"	"MrSteak63"
 	}
 
-	"Build - Bridge"
-	{
-		"map"		"gm_build_bridge"
-		"material"	"vgui/chapters/gm_build_bridge"
-		"credits"	"Matt Mullins (g33k)"
-	}
 
 	"GM_Freeze"
 	{
@@ -99,12 +64,6 @@
 		"credits"	"Jon Sully (Jonny)"
 	}
 
-	"Build - To The Top"
-	{
-		"map"		"gm_build_tothetop"
-		"material"	"vgui/chapters/gm_build_tothetop"
-		"credits"	"Matt Mullins (g33k)"
-	}
 
 	"Tactical Police Cops - Test"
 	{
@@ -113,12 +72,6 @@
 		"credits"	"Garry Newman"
 	}
 
-	"Build - Fortwars"
-	{
-		"map"		"gm_build_fortwars"
-		"material"	"vgui/chapters/gm_build_fortwars"
-		"credits"	"Matt Mullins (g33k)"
-	}
 
 	"Birdman"
 	{

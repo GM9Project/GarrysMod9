@@ -1,0 +1,23 @@
+
+// Please Please Please Please Please Create your own category for maps
+// for your mimimod - overriding this file will cause a shit load of
+// problems for me (and probably you) in later updates.
+
+// Simply name your levels file <yourmodname>.txt
+
+"Melonrace"
+{
+	"Test"
+	{
+		"map"		"gm_melonrace"
+		"material"	"vgui/chapters/gm_melonrace"
+		"credits"	"Garry Newman"
+	}
+
+	"Lockdown"
+	{
+		"map"		"gm_melonlockdown"
+		"material"	"vgui/chapters/gm_melonlockdown"
+		"credits"	"Garry Newman / Valve"
+	}
+}
